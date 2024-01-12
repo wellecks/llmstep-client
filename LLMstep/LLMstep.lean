@@ -121,7 +121,7 @@ def addSuggestions (tacRef : Syntax) (pfxRef: Syntax) (suggestions: List String)
 
       let checks ← suggestions.mapM checkSuggestion
       let texts := suggestions.map fun text => (
-        (Std.Format.prettyExtra (text.stripSuffix "\n")
+        (Std.Format.prettyExtra text.trim
          (indent := (body - start).1)
          (column := (tacticRange.start - start).1)
       ))
