@@ -131,7 +131,7 @@ def addSuggestions (tacRef : Syntax) (pfxRef: Syntax) (suggestions: List String)
           match x.2 with
           | CheckResult.ProofDone => true
           | CheckResult.Valid => true
-          | CheckResult.Invalid => false
+          | CheckResult.Invalid => x.1.containsSubstr "[ERROR]"
 
       let start := (tacRef.getRange?.getD tacticRange).start
       let stop := (pfxRef.getRange?.getD argRange).stop
